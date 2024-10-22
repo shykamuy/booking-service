@@ -8,9 +8,7 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+	sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -20,8 +18,20 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.postgresql:postgresql:42.7.3")
+	implementation("org.hibernate:hibernate-core:6.5.2.Final")
+	implementation("org.springframework:spring-jdbc:6.1.8")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
+
+
+	compileOnly("org.projectlombok:lombok")
+	runtimeOnly("org.postgresql:postgresql")
+	annotationProcessor("org.projectlombok:lombok")
+	implementation("org.mapstruct:mapstruct:1.5.3.Final")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {

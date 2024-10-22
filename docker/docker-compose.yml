@@ -1,0 +1,36 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:12.3
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=booking_db
+    networks:
+      - booking-service-net
+
+  booking_service:
+    build:
+      context: ../BookingService
+      dockerfile: ../BookingService/Dockerfile
+    container_name: app
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/booking_db
+    ports:
+      - "8080:8080"
+    networks:
+      - booking-service-net
+    restart: on-failure
+
+networks:
+  booking-service-net:
+
+
+

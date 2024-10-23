@@ -23,6 +23,9 @@ dependencies {
 	implementation("org.springframework:spring-jdbc:6.1.8")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.kafka:spring-kafka")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
 
 
 

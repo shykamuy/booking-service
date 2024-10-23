@@ -1,20 +1,14 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/booking_db
-    username: postgres
-    password: postgres
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
   kafka:
     bootstrap-servers: localhost:9092
   data:
     mongodb:
       uri: mongodb://root:root@localhost:27017/statistics_db?authSource=admin
+
 app:
-  security:
-    type: db
   kafka:
     kafkaEventTopic: "event-topic"
     kafkaEventGroupId: "kafka-event-group-id"
+server:
+  port:
+    8082

@@ -52,6 +52,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager manager) throws Exception {
         http.authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/api/v1/public/account").permitAll()
+                        .requestMatchers("/api/v1/statistics").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 ).csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())

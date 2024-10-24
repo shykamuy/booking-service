@@ -27,7 +27,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/booking_db
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - SPRING_MONGODB_URI=mongodb://root:root@localhost:27017/statistics_db
+      - SPRING_DATA_MONGODB_URI=mongodb://root:root@mongodb:27017/statistics_db?authSource=admin
     ports:
       - "8080:8080"
     networks:
@@ -41,7 +41,7 @@ services:
     container_name: app_statistics
     environment:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - SPRING_MONGODB_URI=mongodb://root:root@localhost:27017/statistics_db
+      - SPRING_DATA_MONGODB_URI=mongodb://root:root@mongodb:27017/statistics_db?authSource=admin
     depends_on:
       - booking_service
       - postgres
